@@ -16,7 +16,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(fmt)
 
 # Define the main executable
-add_executable(Database_sys main.cpp)
+add_executable(Database_sys main.cpp
+        Csv_main.cpp)
 
 # Link fmt library to your project
 target_link_libraries(Database_sys PRIVATE fmt::fmt)

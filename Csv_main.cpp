@@ -1,26 +1,58 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <filesystem>  // C++17
+#include <filesystem>
+#include <vector>
+#include <sstream>
 
-void DDL_add(std::string input,std::string filename) {
+std::vector<std::string> split(const std::string& input, char delimiter) {
+    std::vector<std::string> tokens;
+    std::stringstream ss(input);
+    std::string token;
+
+    while (std::getline(ss, token, delimiter)) {
+        tokens.push_back(token);
+    }
+
+    return tokens;
+}
+
+//template<typename T>
+std::vector<std::string> header(std::string input) {
+    std::vector<std::string>(intput);
+    // return split(input, '\n');
+}
+
+void DDL_add_csv(std::string input, std::string filename) {
     std::filesystem::path filepath = std::filesystem::current_path().parent_path() / filename;
-    std::cout << "Current path: " << std::filesystem::current_path().parent_path() << "\n";
+
+    if (!std::filesystem::exists(filepath)) {
+        std::cout << "File has been generated\n";
+        header(input);
+
+    } else {
+        std::cout << "File is beaning updated\n";
+    }
+    //std::string input = "1,Alice,30,true";
 
     std::ofstream outFile(filepath, std::ios::app);
     if (outFile.is_open()) {
-        outFile << input;
+        outFile << input << "\n";
+        // for(auto const& field : fields) {
+        //     outFile << field << ",";
+        //}
         outFile.close();
-        std::cout << "File written successfully.\n";
+        std::cout << "CSV row added successfully.\n";
     } else {
         std::cerr << "Unable to open file for writing.\n";
     }
 }
 
-void DDL_replace(std::string input,std::string filename) {
+void DDL_replace_csv(std::string input,std::string filename) {
     std::filesystem::path filepath = std::filesystem::current_path().parent_path() / filename;
     std::cout << "Current path: " << std::filesystem::current_path().parent_path() << "\n";
 
+    std::vector<std::string> fields = split(input, ',');
     std::ofstream outFile(filepath);
     if (outFile.is_open()) {
         outFile << input;
@@ -31,7 +63,7 @@ void DDL_replace(std::string input,std::string filename) {
     }
 }
 
-void DDL_delete(std::string filename) {
+void DDL_delete_csv(std::string filename) {
     std::filesystem::path filepath = std::filesystem::current_path().parent_path() / filename;
 
     if (std::filesystem::exists(filepath)) {
@@ -45,7 +77,7 @@ void DDL_delete(std::string filename) {
     }
 }
 
-void DDL_merge(std::string newfilename, std::string filename1, std::string filename2, bool delete1n2) {
+void DDL_merge_csv(std::string newfilename, std::string filename1, std::string filename2, bool delete1n2) {
     std::filesystem::path filepath = std::filesystem::current_path().parent_path();
     std::filesystem::path filepath1 = filepath / filename1;
     std::filesystem::path filepath2 = filepath / filename2;
@@ -75,8 +107,8 @@ void DDL_merge(std::string newfilename, std::string filename1, std::string filen
         newoutFile.close();
 
         if (delete1n2) {
-            DDL_delete(filename1);
-            DDL_delete(filename2);
+            DDL_delete_csv(filename1);
+            DDL_delete_csv(filename2);
         }
 
         std::cout << "Files merged successfully.\n";
@@ -85,21 +117,14 @@ void DDL_merge(std::string newfilename, std::string filename1, std::string filen
     }
 }
 
+void package_tool() {
+
+}
 
 
-
-
-// int main() {
-//     std::string input = "Hello, world!\n";
-//     std::string filename = "test.txt";
-//     std::string input2 = "Hello, world2!\n";
-//     std::string filename2 = "test2.txt";
-//     std::string filename3 = "test3.txt";
-//     DDL_delete(filename);
-//     DDL_delete(filename2);
-//     DDL_add(input, filename);
-//     DDL_add(input2, filename2);
-//     DDL_merge(filename3,filename,filename2,false);
-//     //DDL_delete(filename);
-//     return 0;
-// }
+int main() {
+    DDL_delete_csv("data.csv");
+    DDL_add_csv("1,Alice,30,true", "data.csv");
+    DDL_add_csv("2,Bob,25,true", "data.csv");
+    return 0;
+}

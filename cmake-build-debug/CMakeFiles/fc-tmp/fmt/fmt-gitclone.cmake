@@ -3,11 +3,11 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-if(EXISTS "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt" AND EXISTS "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt" AND
-  "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt" IS_NEWER_THAN "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt")
+if(EXISTS "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt" AND EXISTS "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt" AND
+  "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt" IS_NEWER_THAN "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt")
   message(VERBOSE
     "Avoiding repeated git clone, stamp file is up to date: "
-    "'C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt'"
+    "'C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt'"
   )
   return()
 endif()
@@ -22,12 +22,12 @@ else()
 endif()
 
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E rm -rf "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
+  COMMAND ${CMAKE_COMMAND} -E rm -rf "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to remove directory: 'C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps/fmt-src'")
+  message(FATAL_ERROR "Failed to remove directory: 'C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps/fmt-src'")
 endif()
 
 # try the clone 3 times in case there is an odd git clone issue
@@ -37,7 +37,7 @@ while(error_code AND number_of_tries LESS 3)
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe"
             clone --no-checkout --config "advice.detachedHead=false" "https://github.com/fmtlib/fmt.git" "fmt-src"
-    WORKING_DIRECTORY "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps"
+    WORKING_DIRECTORY "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps"
     RESULT_VARIABLE error_code
     ${maybe_show_command}
   )
@@ -53,7 +53,7 @@ endif()
 execute_process(
   COMMAND "C:/Program Files/Git/cmd/git.exe"
           checkout "11.1.4" --
-  WORKING_DIRECTORY "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
+  WORKING_DIRECTORY "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
@@ -66,22 +66,22 @@ if(init_submodules)
   execute_process(
     COMMAND "C:/Program Files/Git/cmd/git.exe" 
             submodule update --recursive --init 
-    WORKING_DIRECTORY "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
+    WORKING_DIRECTORY "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps/fmt-src"
     RESULT_VARIABLE error_code
     ${maybe_show_command}
   )
 endif()
 if(error_code)
-  message(FATAL_ERROR "Failed to update submodules in: 'C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/_deps/fmt-src'")
+  message(FATAL_ERROR "Failed to update submodules in: 'C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/_deps/fmt-src'")
 endif()
 
 # Complete success, update the script-last-run stamp file:
 #
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E copy "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt" "C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt"
+  COMMAND ${CMAKE_COMMAND} -E copy "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitinfo.txt" "C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to copy script-last-run stamp file: 'C:/Users/tymko/OneDrive/Pulpit/Holder/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt'")
+  message(FATAL_ERROR "Failed to copy script-last-run stamp file: 'C:/Users/Lenovo/Documents/Database_sys/cmake-build-debug/CMakeFiles/fc-stamp/fmt/fmt-gitclone-lastrun.txt'")
 endif()
