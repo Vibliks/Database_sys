@@ -3,21 +3,26 @@ project(Database_sys)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# Enable fetching dependencies from Git
+# Fetch external dependencies
 include(FetchContent)
 
-# Fetch fmt library from GitHub
 FetchContent_Declare(
         fmt
         GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-        GIT_TAG        11.1.4  # You can change this to any other tag or branch
+        GIT_TAG        11.1.4
 )
 
 FetchContent_MakeAvailable(fmt)
 
-# Define the main executable
-add_executable(Database_sys main.cpp
-        Csv_main.cpp)
+# Optional: Add include directories if needed
+include_directories(${CMAKE_SOURCE_DIR}/scr)
 
-# Link fmt library to your project
+
+add_executable(Database_sys
+        scr/main.cpp
+        scr/Csv_main.cpp
+        scr/Header.cpp
+)
+
+
 target_link_libraries(Database_sys PRIVATE fmt::fmt)
